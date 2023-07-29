@@ -8,11 +8,11 @@ function Home() {
   }, []);
 
   const loadVehicles = async () => {
-    await axios
+    let results=await axios
       .get("http://localhost:8080/api/getallvehicles")
       .then((response) => console.log(response.data));
   };
 
-  return <h1>Hello Ambi</h1>;
+  return <h1>Hello Ambi </h1>;
 }
 export default Home;

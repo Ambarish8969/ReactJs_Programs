@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Interactive Circles and Arrows</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center">Bubbles App</h1>
+    <div style="text-align: center">
+      <canvas
+        id="myCanvas"
+        width="800"
+        height="400"
+        style="align-items: center"
+      ></canvas>
+    </div>
+    <button id="resetButton">Reset</button>
+
+    <script>
+        // Get the canvas element and its context
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Circle positions, colors, and arrow positions
+        var circleData = [
+            { x: 95, y: 50, radius: 40, color: "orange", hit: false },
+            { x: 95, y: 150, radius: 40, color: "blue", hit: false },
+            { x: 95, y: 250, radius: 40, color: "red", hit: false },
+            { x: 95, y: 350, radius: 40, color: "green", hit: false }
+        ];
+
+        // Arrow positions and states
+        var arrowData = [
+            { startX: 660, startY: 55, endX: 760, endY: 55, moving: false },
+            { startX: 660, startY: 155, endX: 760, endY: 155, moving: false },
+            { startX: 660, startY: 255, endX: 760, endY: 255, moving: false },
+            { startX: 660, startY: 355, endX: 760, endY: 355, moving: false }
+        ];
+
+        // Function to draw circles and arrows
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < circleData.length; i++) {
+                var circle = circleData[i];
+                var arrow = arrowData[i];
+
+                // Draw circle
+                ctx.beginPath();
+                ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = circle.color;
+                ctx.fill();
+
+                if (arrow.moving) {
+                    // Update arrow position
+                    var dx = circle.x - arrow.endX;
+                    var dy = circle.y - arrow.endY;
+                    var distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance > 1) {
+                        arrow.endX += dx / distance;
+                        arrow.endY += dy / distance;
+                    } else {
+                        arrow.moving = false;
+                        circle.hit = true;
+                        circle.color = "gray"; // Change circle color upon hit
+                    }
+                }
+
+                // Draw arrow
+                ctx.beginPath();
+                ctx.moveTo(arrow.startX, arrow.startY);
+                ctx.lineTo(arrow.endX, arrow.endY);
+                ctx.stroke();
+            }
+            setInterval(() => {
+                draw();
+            }, 500);
+        }
+
+        // Function to handle mouse click
+        function handleClick(event) {
+            var rect = canvas.getBoundingClientRect();
+            var mouseX = event.clientX - rect.left;
+            var mouseY = event.clientY - rect.top;
+
+            for (var i = 0; i < circleData.length; i++) {
+                var circle = circleData[i];
+                var arrow = arrowData[i];
+
+                var dx = mouseX - circle.x;
+                var dy = mouseY - circle.y;
+                var distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < circle.radius) {
+                    if (!arrow.moving && !circle.hit) {
+                        arrow.moving = true;
+                    }
+                }
+            }
+            
+        }
+
+        // Function to reset the application
+        function reset() {
+            for (var i = 0; i < circleData.length; i++) {
+                var circle = circleData[i];
+                var arrow = arrowData[i];
+
+                circle.hit = false;
+                circle.color = circle.hit ? "gray" : circle.color;
+                arrow.moving = false;
+
+                arrow.endX = arrow.startX + 100;
+                arrow.endY = arrow.startY;
+            }
+
+            draw();
+        }
+
+        // Add click event listener to canvas
+        canvas.addEventListener("click", handleClick);
+
+        // Add click event listener to reset button
+        var resetButton = document.getElementById("resetButton");
+        resetButton.addEventListener("click", reset);
+
+        // Call the draw function
+        draw();
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Circles and Arrows</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">Bubbles App</h1>
+    <div style="text-align: center">
+      <canvas
+        id="myCanvas"
+        width="800"
+        height="400"
+        style="align-items: center"
+      ></canvas>
+    </div>
+
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      var circleData = [
+        { x: 95, y: 50, radius: 40, color: "orange" },
+        { x: 95, y: 150, radius: 40, color: "blue" },
+        { x: 95, y: 250, radius: 40, color: "red" },
+        { x: 95, y: 350, radius: 40, color: "green" },
+      ];
+
+      // Arrow positions
+      var arrowData = [
+        { startX: 660, startY: 55, endX: 760, endY: 55 },
+        { startX: 660, startY: 155, endX: 760, endY: 155 },
+        { startX: 660, startY: 255, endX: 760, endY: 255 },
+        { startX: 660, startY: 355, endX: 760, endY: 355 },
+      ];
+
+      function draw() {
+        for (let i = 0; i < arrowData.length; i++) {
+          var circle = circleData[i];
+          var arrow = arrowData[i];
+
+          ctx.beginPath();
+          ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+          ctx.fillStyle = circle.color;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.moveTo(arrow.startX, arrow.startY);
+          ctx.lineTo(arrow.endX, arrow.endY);
+          ctx.stroke();
+
+        
+        var angle = Math.atan2(arrow.endY - arrow.startY, arrow.endX - arrow.startX);
+        console.log(angle)
+        // var angle = Math.atan2(arrow.endY - arrow.startY, arrow.endX - arrow.startX);
+        var arrowheadLength = 10;
+        var arrowheadX = arrow.startX - arrowheadLength * Math.cos(angle - Math.PI / 6);
+        var arrowheadY = arrow.startY - arrowheadLength * Math.sin(angle - Math.PI / 6);
+        // var arrowheadX = arrow.endX + arrowheadLength * Math.cos(angle - Math.PI / 6);
+        // var arrowheadY = arrow.endY + arrowheadLength * Math.sin(angle - Math.PI / 6);
+
+        console.log(arrowheadX,arrowheadY)
+
+        
+        ctx.lineTo(arrowheadX, arrowheadY);
+        ctx.moveTo(arrow.endX, arrow.endY);
+        arrowheadX = arrow.endX + arrowheadLength * Math.cos(angle + Math.PI / 6);
+        arrowheadY = arrow.endY + arrowheadLength * Math.sin(angle + Math.PI / 6);
+        ctx.lineTo(arrowheadX, arrowheadY);
+        
+
+        ctx.stroke();
+
+        // var angle = Math.atan2(arrow.endY - arrow.startY, arrow.endX - arrow.startX);
+        // var arrowheadLength = 10;
+        // var arrowheadX = arrow.endX + arrowheadLength * Math.cos(angle - Math.PI / 6);
+        // var arrowheadY = arrow.endY + arrowheadLength * Math.sin(angle - Math.PI / 6);
+
+        // ctx.lineTo(arrowheadX, arrowheadY);
+        // ctx.moveTo(arrow.startX, arrow.startY);
+        // arrowheadX = arrow.startX + arrowheadLength * Math.cos(angle + Math.PI / 6);
+        // arrowheadY = arrow.startY + arrowheadLength * Math.sin(angle + Math.PI / 6);
+        // ctx.lineTo(arrowheadX, arrowheadY);
+
+        // ctx.stroke();
+        }
+      }
+      draw();
+    </script>
+  </body>
+</html>

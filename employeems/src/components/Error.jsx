@@ -2,7 +2,7 @@ import React from 'react'
 
 const Error = () => {
   return (
-    <h1>OOPs! Error Page</h1>
+    <h1>OOPs! Error : Page does'nt exist</h1>
   )
 }
 

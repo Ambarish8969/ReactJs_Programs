@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.navbar{
+    background-color: rgb(144, 144, 209);
+    margin: 0;
+    padding: 0;
+    
+}
+.ul-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.link-items{
+    text-decoration: none;
+    color: white;
+}
+.list-items{
+    float: left;
+    margin: 0;
+    padding: 15px;
+    
+}
+.list-items:hover{
+    background-color: black;
+
+}
+a.list-items:visited{
+    background-color: black;
+}
+a.link-items:active{
+    background-color: black;
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import NavBarComp from "./NavBarComp";
+import FooterComp from "./FooterComp";
 
 const ShowEmployee = () => {
   let [employee, setEmployee] = useState({
@@ -28,9 +30,11 @@ const ShowEmployee = () => {
 
   return (
     <>
+    <NavBarComp />
       <h2>Employee Name : {employee.ename}</h2>
       <h2>Employee Age : {employee.eage}</h2>
       <h2>Employee Salary : ₹ {employee.esalary}</h2>
+      <FooterComp />
     </>
   );
 };

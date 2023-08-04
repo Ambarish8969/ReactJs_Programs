@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavBarComp from "./NavBarComp";
+import FooterComp from "./FooterComp";
 
 const AddEmployee = () => {
   let [employee, setEmployee] = useState({
@@ -8,7 +10,7 @@ const AddEmployee = () => {
     esalary: "",
   });
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   function changeEmployee(event) {
     const newData = { ...employee };
@@ -42,6 +44,7 @@ const AddEmployee = () => {
 
   return (
     <>
+      <NavBarComp />
       <form onSubmit={addEmployeeData}>
         <input
           type="text"
@@ -76,12 +79,17 @@ const AddEmployee = () => {
         />
         <br />
         <br />
-        <button type="submit">Add Employee</button>
+        <button style={{backgroundColor: "#4caf50", padding:"2px"}} type="submit">Add Employee</button>
       </form>
       <br />
-      <button onClick={()=>{
-        navigate("/getemployees")
-      }}>Get Employees</button>
+      <button style={{backgroundColor: "blue", padding:"2px",color:"white"}}
+        onClick={() => {
+          navigate("/getemployees");
+        }}
+      >
+        Get Employees
+      </button>
+      <FooterComp />
     </>
   );
 };

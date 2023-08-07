@@ -18,9 +18,12 @@ const UpdateEmpById = () => {
     <>
     <NavBarComp />
         <form onSubmit={handleSubmit}>
-            <input type="number" id='eid' name='eid' onChange={handleChange} value={eid} placeholder='Enter Employee Id' />
-            <button style={{backgroundColor:"blue",color:'white'}} type='submit'>Go to Update</button>
+          <br />
+            <input className="form-control" style={{width:"250px"}} type="number" id='eid' name='eid' onChange={handleChange} value={eid} placeholder='Enter Employee Id' />
+            <br />
+            <button className="btn btn-success" type='submit'>Go to Update</button>
         </form>
+        <br />
         <FooterComp />
     </>
   )

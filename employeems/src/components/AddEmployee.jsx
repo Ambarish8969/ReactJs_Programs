@@ -45,50 +45,86 @@ const AddEmployee = () => {
   return (
     <>
       <NavBarComp />
-      <form onSubmit={addEmployeeData}>
-        <input
-          type="text"
-          placeholder="Employee Name"
-          id="ename"
-          name="ename"
-          value={employee.ename}
-          required
-          onChange={(e) => changeEmployee(e)}
-        />
-        <br />
-        <br />
-        <input
-          type="number"
-          placeholder="Employee Age"
-          id="eage"
-          name="eage"
-          value={employee.eage}
-          required
-          onChange={(e) => changeEmployee(e)}
-        />
-        <br />
-        <br />
-        <input
-          type="number"
-          placeholder="Employee Salary"
-          id="esalary"
-          name="esalary"
-          value={employee.esalary}
-          required
-          onChange={(e) => changeEmployee(e)}
-        />
-        <br />
-        <br />
-        <button style={{backgroundColor: "#4caf50", padding:"2px"}} type="submit">Add Employee</button>
-      </form>
-      <br />
-      <button style={{backgroundColor: "blue", padding:"2px",color:"white"}}
-        onClick={() => {
-          navigate("/getemployees");
+      <div
+        className="card"
+        style={{
+          width: "18rem",
+          height: "450px",
+          backgroundImage: "linear-gradient(#00b7c2, #4eF037)",
         }}
       >
-        Get Employees
-      </button>
+        <div className="card-body">
+          <h5 className="card-title">Form</h5>
+          <form onSubmit={addEmployeeData}>
+            <div className="mb-3" style={{ padding: "5px" }}>
+              <label htmlfor="formGroupExampleInput" className="form-label">
+                Employee Name :
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="ename"
+                name="ename"
+                placeholder="ename"
+                value={employee.ename}
+                required
+                onChange={(e) => changeEmployee(e)}
+              />
+            </div>
+            <div className="mb-3" style={{ padding: "5px" }}>
+              <label htmlfor="formGroupExampleInput2" className="form-label">
+                Employee Age :
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="eage"
+                name="eage"
+                placeholder="eage"
+                value={employee.eage}
+                required
+                onChange={(e) => changeEmployee(e)}
+              />
+            </div>
+            <div className="mb-3" style={{ padding: "5px" }}>
+              <label htmlfor="formGroupExampleInput2" className="form-label">
+                Employee Salary :
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="esalary"
+                name="esalary"
+                placeholder="esalary"
+                value={employee.esalary}
+                required
+                onChange={(e) => changeEmployee(e)}
+              />
+            </div>
+            {/* <button
+              style={{ marginLeft: "5px", marginTop: "8px" }}
+              
+            >
+              Add Employee
+            </button> */}
+            <button type="submit" className="btn btn-success" style={{ marginLeft: "5px", marginTop: "8px" }}>Add Employee</button>
+            <button type="submit"
+              style={{
+                backgroundColor: "blue",
+                
+                color: "white",
+                marginLeft: "5px", marginTop: "8px"
+              }}
+              className="btn btn-success"
+              onClick={() => {
+                navigate("/getemployees");
+              }}
+            >
+              Get Employees
+            </button>
+          </form>
+        </div>
+      </div>
       <FooterComp />
     </>
   );

@@ -61,19 +61,15 @@ const GetEmployees = () => {
                 <td style={cssStyle}>{currentEmployee.ename}</td>
                 <td style={cssStyle}>{currentEmployee.eage}</td>
                 <td style={cssStyle}>{currentEmployee.esalary}</td>
-                <button style={{backgroundColor: "red",color:"white", padding:"2px"}} onClick={() => deleteFunction(currentEmployee.eid)}>
-                  Delete
-                </button>
-                <button style={{backgroundColor: "#4caf50", padding:"2px"}} onClick={() => editFunction(currentEmployee.eid)}>
-                  Edit
-                </button>
+                <button type="submit" className="btn btn-danger" style={{ marginLeft: "5px", marginTop: "8px" }} onClick={() => deleteFunction(currentEmployee.eid)}>Delete</button>
+                <button type="submit" className="btn btn-info" style={{ marginLeft: "5px", marginTop: "8px" }} onClick={() => editFunction(currentEmployee.eid)}>Edit</button>
               </tr>
             </>
           );
         })}
       </table>
 
-      <button style={{backgroundColor:"blue",color:'white'}}
+      <button className="btn btn-primary" style={{backgroundColor:"blue",color:'white'}}
         onClick={() => {
           navigate("/home");
         }}

@@ -19,18 +19,23 @@ const GetEmpById = () => {
 
   return (
     <>
-    <NavBarComp />
+    <NavBarComp  />
       <form onSubmit={changePath}>
+        <br />
         <input
           type="number"
+          className="form-control"
+          style={{width:"250px"}}
           placeholder="Enter Employee Id"
           id="eid"
           onChange={changeEmployee}
           value={eid}
         />
-        <button style={{backgroundColor: "#4caf50", padding:"2px"}} type="submit">Get Employee</button>
+        <br />
+        <button className="btn btn-info" style={{}} type="submit">Get Employee</button>
       </form>
-      <FooterComp />
+      <br />
+      <FooterComp style={{bottom:0,left:0,position:"fixed",width:"100%"}} />
     </>
   );
 };

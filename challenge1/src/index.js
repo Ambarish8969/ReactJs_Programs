@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 // import Challenge1 from './Challenge1'

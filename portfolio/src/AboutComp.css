@@ -1,0 +1,20 @@
+/* AboutComp.css */
+
+.card {
+    width: 98%; /* Make the card take full width of the container */
+    margin: 20px; /* Add some spacing around the card */
+    background-color: rgb(65, 63, 63);
+    color: white;
+  }
+  
+  .card-body {
+    padding: 20px; /* Add padding to the card body content */
+  }
+  
+  /* Media Query for Mobile View */
+  @media (max-width: 768px) {
+    .card {
+      margin: 10px; /* Adjust spacing for smaller screens */
+    }
+  }
+  
